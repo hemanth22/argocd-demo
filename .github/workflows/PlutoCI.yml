@@ -1,0 +1,27 @@
+name: Pluto API Deprecation Check
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  pull_request:
+    branches:
+      - "*"
+  workflow_dispatch:   # allows manual trigger from GitHub UI
+
+jobs:
+  pluto-check:
+    name: Run Pluto Scan
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Download Pluto
+        uses: FairwindsOps/pluto/github-action@master
+
+      - name: Use Pluto
+        run: |
+          pluto detect-files -d yamls
