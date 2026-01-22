@@ -25,3 +25,4 @@ jobs:
       - name: Use Pluto
         run: |
           pluto detect-files -d yamls
+          pluto detect-files -d kustomize-demo
